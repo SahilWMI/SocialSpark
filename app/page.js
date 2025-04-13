@@ -1,7 +1,7 @@
 'use client';
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { auth } from '../lib/firebase';
-import { useAuth } from '../context/AuthContext';
+import { auth } from '@/lib/firebase';
+import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -12,7 +12,7 @@ export default function LoginPage() {
   // Redirect to /home if user is already logged in
   useEffect(() => {
     if (user) {
-      router.push('/dashboard');
+      router.push('/home');
     }
   }, [user]);
 
@@ -20,7 +20,6 @@ export default function LoginPage() {
     const provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider);
   };
-
   if (loading) return <div className="text-center mt-20">Loading...</div>;
 
   return (
@@ -53,7 +52,6 @@ export default function LoginPage() {
                     </svg>
                     Sign up with Google
                 </button>
-
                 <button className="cursor-pointer  w-1/2 bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-4 rounded-md border border-gray-300 flex items-center justify-center">
                     <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                         <path
@@ -64,7 +62,6 @@ export default function LoginPage() {
                     Sign up with Apple
                 </button>
             </div>
-
             <div className="text-center text-gray-500 my-4">Or</div>
 
             <button className="cursor-pointer  w-1/2 bg-purple-600 hover:bg-purple-700 text-white py-3 px-4 rounded-md">
