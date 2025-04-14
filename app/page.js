@@ -23,8 +23,8 @@ export default function LoginPage() {
   if (loading) return <div className="text-center mt-20">Loading...</div>;
 
   return (
-    <div className="min-h-screen bg-[#d7c4af] flex justify-center">
-    <div className="flex justify-center items-center min-w-[80%] bg-white p-8 rounded-lg my-[50px]">
+    <div className="min-h-screen bg-[#d8d5d2] flex justify-center">
+    <div className="flex justify-center items-center min-w-[60%] bg-white p-8 rounded-lg my-[50px]">
         <div className="w-1/2 text-center">
         <div className='my-3'>
             <h1 className="text-xl text-black font-bold m-3">Welcome</h1>
