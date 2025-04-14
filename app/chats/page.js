@@ -4,7 +4,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LogoutButton from '@/components/LogoutButton';
-import Bottombar from '@/components/Navbar';
+import Navbar from '@/components/Navbar';
 
 
 export default function DashboardPage() {
@@ -32,7 +32,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-      <Bottombar/>
+      <Navbar/>
       <div>
       <h1 className="text-3xl text-purple-600 font-bold">Welcome, {user?.displayName || 'User'}!</h1>
       {user?.photoURL && (

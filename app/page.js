@@ -12,7 +12,7 @@ export default function LoginPage() {
   // Redirect to /home if user is already logged in
   useEffect(() => {
     if (user) {
-      router.push('/home');
+      router.push('/chats');
     }
   }, [user]);
 
