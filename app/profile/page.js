@@ -3,8 +3,8 @@
 
 import Image from 'next/image';
 import Navbar from '@/components/Navbar'
-import LogoutButton from '@/components/LogoutButton';
 import { useAuth } from '@/context/AuthContext';
+import SettingsPanel from '@/components/SettingPanel';
 
 export default function ProfilePage() {
  const { user, loading } = useAuth();
@@ -24,12 +24,11 @@ if (!user) {
   );
 }
   return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white text-black">
       <Navbar/>
-        <div className='p-4'>
-            <h1 className='font-bold text-black text-3xl'>Profile</h1>
-            <div>
-            </div>
+        <div className='p-4 flex justify-between'>
+            <h1 className='font-bold text-3xl'>Profile</h1>
+            <SettingsPanel/>
         </div>
 
       {/* Profile section */}
@@ -44,7 +43,7 @@ if (!user) {
               className="rounded-full border-4 border-white"
             />
             <div>
-              <h2 className="text-2xl text-black font-bold">{user.name}</h2>
+              <h2 className="text-2xl  font-bold">{user.name}</h2>
               <p className="text-gray-500">{user.username}</p>
               <p className="mt-2 text-sm text-gray-700">{user.bio}</p>
             </div>
@@ -52,7 +51,7 @@ if (!user) {
         
       </div>
           <div className="p-4 border-t border-b border-zinc-200">
-            <h1 className='text-black font-bold text-xl '>My hobbies</h1>
+            <h1 className=' font-bold text-xl '>My hobbies</h1>
              <div className='flex gap-3 m-2 p-2'>
                 <span className='text-purple-500 font-semibold text-sm rounded-2xl bg-purple-200 px-3 py-1'>Lorem ipsum.</span>
                 <span className='text-purple-500 font-semibold text-sm rounded-2xl bg-purple-200 px-3 py-1'>Lorem ipsum.</span>
@@ -60,7 +59,7 @@ if (!user) {
                 <span className='text-purple-500 font-semibold text-sm rounded-2xl bg-purple-200 px-3 py-1'>Lorem ipsum.</span>
              </div>
           </div>
-        <LogoutButton/>
+      
     </div>
   );
 }
