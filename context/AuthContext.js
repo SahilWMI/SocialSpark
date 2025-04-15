@@ -13,12 +13,29 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
+      // setUser(firebaseUser);
+      if (firebaseUser) {
+        setUser({
+          name: firebaseUser.displayName || 'Anonymous',
+          username: firebaseUser.email ? '@' + firebaseUser.email.split('@')[0] : '@user',
+          bio: 'This is my bio...', 
+          profilePic: firebaseUser.photoURL || '/default-profile.png',
+          coverPic: '/cover.jpg',
+          followers: 0,
+          following: 0,
+          posts: 0,
+        });
+
+      } else {
+        setUser(null);
+      }
+
       setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
+ 
 
   return (
     <AuthContext.Provider value={{ user, loading }}>

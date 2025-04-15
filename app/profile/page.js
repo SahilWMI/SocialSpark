@@ -1,38 +1,40 @@
 'use client';
 
+
 import Image from 'next/image';
 import Navbar from '@/components/Navbar'
 import LogoutButton from '@/components/LogoutButton';
+import { useAuth } from '@/context/AuthContext';
 
 export default function ProfilePage() {
-  const user = {
-    name: 'John Doe',
-    username: '@johndoe',
-    bio: 'Web developer. Coffee lover. Always learning.',
-    profilePic: '/default-profile.png', // replace with dynamic user photo if using Firebase Auth
-    coverPic: '/cover.jpg', // optional cover image
-    followers: 124,
-    following: 78,
-    posts: 32,
-  };
+ const { user, loading } = useAuth();
 
+if (loading) {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-100">
-        <Navbar/>
-      {/* Cover photo */}
-      <div className="w-full h-48 bg-purple-600 relative">
-        <Image
-          src={user.coverPic}
-          alt="Cover"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-70"
-        />
-      </div>
+    <div className="flex justify-center items-center h-screen">
+      <p>Loading profile...</p>
+    </div>
+  );
+}
+if (!user) {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <p>User not found.</p>
+    </div>
+  );
+}
+  return (
+      <div className="min-h-screen bg-white">
+      <Navbar/>
+        <div className='p-4'>
+            <h1 className='font-bold text-black text-3xl'>Profile</h1>
+            <div>
+            </div>
+        </div>
 
       {/* Profile section */}
-      <div className="max-w-4xl mx-auto p-4 -mt-16 z-10 relative">
-        <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="max-w-4xl mx-auto p-4 ">
+      
           <div className="flex items-center space-x-6">
             <Image
               src={user.profilePic}
@@ -42,27 +44,23 @@ export default function ProfilePage() {
               className="rounded-full border-4 border-white"
             />
             <div>
-              <h2 className="text-2xl font-bold">{user.name}</h2>
+              <h2 className="text-2xl text-black font-bold">{user.name}</h2>
               <p className="text-gray-500">{user.username}</p>
               <p className="mt-2 text-sm text-gray-700">{user.bio}</p>
             </div>
           </div>
-
-          {/* Stats */}
-          <div className="flex mt-6 space-x-8 text-sm text-gray-700">
-            <div>
-              <span className="font-semibold">{user.followers}</span> Followers
-            </div>
-            <div>
-              <span className="font-semibold">{user.following}</span> Following
-            </div>
-            <div>
-              <span className="font-semibold">{user.posts}</span> Posts
-            </div>
-          </div>
-        </div>
-        <LogoutButton/>
+        
       </div>
+          <div className="p-4 border-t border-b border-zinc-200">
+            <h1 className='text-black font-bold text-xl '>My hobbies</h1>
+             <div className='flex gap-3 m-2 p-2'>
+                <span className='text-purple-500 font-semibold text-sm rounded-2xl bg-purple-200 px-3 py-1'>Lorem ipsum.</span>
+                <span className='text-purple-500 font-semibold text-sm rounded-2xl bg-purple-200 px-3 py-1'>Lorem ipsum.</span>
+                <span className='text-purple-500 font-semibold text-sm rounded-2xl bg-purple-200 px-3 py-1'>Lorem ipsum.</span>
+                <span className='text-purple-500 font-semibold text-sm rounded-2xl bg-purple-200 px-3 py-1'>Lorem ipsum.</span>
+             </div>
+          </div>
+        <LogoutButton/>
     </div>
   );
 }
