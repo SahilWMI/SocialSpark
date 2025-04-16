@@ -31,9 +31,9 @@ export default function SettingsPanel() {
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between p-4 border-b">
+        <div className="flex items-center justify-between p-4 border-b border-zinc-200">
           <h2 className="text-lg font-semibold">Settings</h2>
-          <button onClick={() => setIsOpen(false)} className="text-gray-600 ">
+          <button onClick={() => setIsOpen(false)} className="text-gray-600 cursor-pointer">
             ✕
           </button>
         </div>

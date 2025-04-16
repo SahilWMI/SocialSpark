@@ -2,9 +2,9 @@
 
 
 import Image from 'next/image';
-import Navbar from '@/components/Navbar'
 import { useAuth } from '@/context/AuthContext';
 import SettingsPanel from '@/components/SettingPanel';
+import Navbar from '@/components/Navbar'
 
 export default function ProfilePage() {
  const { user, loading } = useAuth();

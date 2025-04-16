@@ -1,7 +1,7 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../lib/firebase';
+import { onAuthStateChanged  } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 // 1. Create context
 const AuthContext = createContext();
@@ -48,3 +48,4 @@ export function AuthProvider({ children }) {
 export function useAuth() {
   return useContext(AuthContext);
 }
+
